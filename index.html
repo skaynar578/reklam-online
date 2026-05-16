@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -57,6 +56,20 @@ button:hover{
     background:red;
 }
 
+/* 🔥 DROPDOWN */
+.dropdown{
+    margin-top:10px;
+}
+
+.dropdown-content{
+    display:none;
+}
+
+.dropdown-content button{
+    background:#222;
+    font-size:14px;
+}
+
 video{
     width:100%;
     height:100%;
@@ -72,18 +85,44 @@ video{
 <div class="container">
 
 <div class="menu">
-    <h3>Kategoriler</h3>
 
-    <button onclick="setCategory('araba')">🚗 Araba</button>
-    <button onclick="setCategory('teknoloji')">📱 Teknoloji</button>
-    <button onclick="setCategory('trend')">🛍 Trend Ürün</button>
-    <button onclick="setCategory('yerel')">🏪 Yerel</button>
+    <h3 onclick="toggleMenu()" style="cursor:pointer;">
+        📂 Kategoriler (Tıkla Aç/Kapat)
+    </h3>
+
+    <div class="dropdown-content" id="menu">
+
+        <!-- ANA KATEGORİLER -->
+        <button onclick="setCategory('araba')">🚗 Araba</button>
+        <button onclick="setCategory('teknoloji')">📱 Teknoloji</button>
+        <button onclick="setCategory('trend')">🛍 Trend Ürün</button>
+        <button onclick="setCategory('yerel')">🏪 Yerel</button>
+        <button onclick="setCategory('muzik')">🎵 Müzik</button>
+
+        <hr>
+
+        <!-- SENİN EKLEDİKLERİN -->
+        <button onclick="setCategory('mobilya')">🪑 Mobilya</button>
+        <button onclick="setCategory('aksesuar')">⌚ Aksesuar</button>
+        <button onclick="setCategory('giyim')">👕 Giyim & Tekstil</button>
+        <button onclick="setCategory('taki')">💍 Takı & Bijuteri</button>
+        <button onclick="setCategory('canta')">👜 Çanta</button>
+        <button onclick="setCategory('servis')">🛠 Teknik Servis</button>
+        <button onclick="setCategory('dekorasyon')">🏠 Dekorasyon</button>
+        <button onclick="setCategory('tamir')">🔧 Tamir & Tadilat</button>
+        <button onclick="setCategory('nakliye')">🚚 Nakliye</button>
+        <button onclick="setCategory('uretim')">🏭 Üretim</button>
+        <button onclick="setCategory('market')">🛒 Market</button>
+        <button onclick="setCategory('kisisel')">🧑 Kişisel Hizmet</button>
+
+    </div>
 
     <hr>
 
     <p style="font-size:12px;">
         Sistem demo versiyonudur. Reklamlar kategoriye göre oynatılır.
     </p>
+
 </div>
 
 <div class="screen">
@@ -94,16 +133,33 @@ video{
 
 <script>
 
-// 🔥 REKLAM VERİLERİ (sonra sen değiştireceksin)
+// 🔥 MENÜ AÇ/KAPAT
+function toggleMenu(){
+    let menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+
+// 🎥 REKLAM VERİLERİ
 let ads = {
-    araba: [
-        "https://www.w3schools.com/html/mov_bbb.mp4"
-    ],
-    teknoloji: [
-        "https://www.w3schools.com/html/movie.mp4"
-    ],
-    trend: [],
-    yerel: []
+    araba:["https://www.w3schools.com/html/mov_bbb.mp4"],
+    teknoloji:["https://www.w3schools.com/html/movie.mp4"],
+    trend:[],
+    yerel:[],
+    muzik:["https://www.w3schools.com/html/movie.mp4"],
+
+    mobilya:[],
+    aksesuar:[],
+    giyim:[],
+    taki:[],
+    canta:[],
+    servis:[],
+    dekorasyon:[],
+    tamir:[],
+    nakliye:[],
+    uretim:[],
+    market:[],
+    kisisel:[]
 };
 
 let currentCategory = "araba";
