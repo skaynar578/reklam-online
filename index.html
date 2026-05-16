@@ -12,7 +12,7 @@ body{
     background:black;
     color:white;
     overflow:hidden;
-    padding-top:60px; /* 🔥 sabit header için */
+    padding-top:60px;
 }
 
 /* 🔥 SABİT ÜST BAR */
@@ -26,26 +26,41 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 20px;
-    z-index:9999;
+    padding:0 15px;
     box-sizing:border-box;
+    z-index:9999;
 }
 
+/* LOGO */
 .title{
     font-size:20px;
     font-weight:bold;
 }
 
-.whatsapp{
-    background:green;
-    color:white;
-    padding:8px 14px;
+/* BUTONLAR */
+.actions{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    padding:8px 12px;
     border-radius:6px;
     text-decoration:none;
     font-weight:bold;
+    color:white;
+    font-size:14px;
 }
 
-/* ANA LAYOUT */
+.whatsapp{
+    background:green;
+}
+
+.reklam{
+    background:red;
+}
+
+/* LAYOUT */
 .container{
     display:flex;
     height:calc(100vh - 60px);
@@ -53,7 +68,6 @@ body{
     width:100%;
 }
 
-/* MENU */
 .menu{
     width:25%;
     background:#1a1a1a;
@@ -62,7 +76,6 @@ body{
     overflow-y:auto;
 }
 
-/* SCREEN */
 .screen{
     width:75%;
     display:flex;
@@ -101,24 +114,37 @@ video{
 
 <!-- 🔥 SABİT HEADER -->
 <header class="topbar">
-    <div class="title">📺 DİJİTAL REKLAM TV</div>
 
-    <a class="whatsapp"
-       href="https://wa.me/905074163605?text=Merhaba%20Dijital%20Reklam%20TV"
-       target="_blank">
-        📲 WhatsApp
-    </a>
+    <div class="title">
+        📺 DİJİTAL REKLAM TV
+    </div>
+
+    <div class="actions">
+
+        <a class="btn reklam" href="#" onclick="reklamVer()">
+            📢 Reklam Ver
+        </a>
+
+        <a class="btn whatsapp"
+           href="https://wa.me/905074163605?text=Merhaba%20Dijital%20Reklam%20TV"
+           target="_blank">
+            📲 WhatsApp
+        </a>
+
+    </div>
+
 </header>
 
 <div class="container">
 
+<!-- MENÜ -->
 <div class="menu">
 
     <h3>📂 Kategoriler</h3>
 
     <button onclick="setCategory('araba')">🚗 Araba</button>
     <button onclick="setCategory('teknoloji')">📱 Teknoloji</button>
-    <button onclick="setCategory('trend')">🛍 Trend Ürün</button>
+    <button onclick="setCategory('trend')">🛍 Trend</button>
     <button onclick="setCategory('yerel')">🏪 Yerel</button>
     <button onclick="setCategory('muzik')">🎵 Müzik</button>
 
@@ -139,6 +165,7 @@ video{
 
 </div>
 
+<!-- EKRAN -->
 <div class="screen">
     <video id="player" autoplay muted></video>
 </div>
@@ -147,12 +174,23 @@ video{
 
 <script>
 
+// 📢 REKLAM VER BUTONU
+function reklamVer(){
+    let mesaj = "Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.%0AKategori: " + currentCategory;
+
+    let numara = "905074163605";
+
+    window.open("https://wa.me/" + numara + "?text=" + mesaj, "_blank");
+}
+
+// 📂 KATEGORİ SEÇ
 function setCategory(cat){
     currentCategory = cat;
     index = 0;
     play();
 }
 
+// 🎥 REKLAM VERİLERİ
 let ads = {
     araba:["https://www.w3schools.com/html/mov_bbb.mp4"],
     teknoloji:["https://www.w3schools.com/html/movie.mp4"],
@@ -177,6 +215,7 @@ let ads = {
 let currentCategory = "araba";
 let index = 0;
 
+// ▶️ OYNAT
 function play(){
     let list = ads[currentCategory];
     let video = document.getElementById("player");
