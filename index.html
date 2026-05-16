@@ -1,1 +1,144 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Dijital Reklam TV</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:black;
+    color:white;
+}
+
+header{
+    background:#111;
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+.menu{
+    width:25%;
+    background:#1a1a1a;
+    padding:15px;
+    box-sizing:border-box;
+}
+
+.screen{
+    width:75%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:black;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    cursor:pointer;
+    border:none;
+    background:#333;
+    color:white;
+    font-size:16px;
+    border-radius:6px;
+}
+
+button:hover{
+    background:red;
+}
+
+video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<header>📺 DİJİTAL REKLAM TV</header>
+
+<div class="container">
+
+<div class="menu">
+    <h3>Kategoriler</h3>
+
+    <button onclick="setCategory('araba')">🚗 Araba</button>
+    <button onclick="setCategory('teknoloji')">📱 Teknoloji</button>
+    <button onclick="setCategory('trend')">🛍 Trend Ürün</button>
+    <button onclick="setCategory('yerel')">🏪 Yerel</button>
+
+    <hr>
+
+    <p style="font-size:12px;">
+        Sistem demo versiyonudur. Reklamlar kategoriye göre oynatılır.
+    </p>
+</div>
+
+<div class="screen">
+    <video id="player" autoplay muted></video>
+</div>
+
+</div>
+
+<script>
+
+// 🔥 REKLAM VERİLERİ (sonra sen değiştireceksin)
+let ads = {
+    araba: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    teknoloji: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    trend: [],
+    yerel: []
+};
+
+let currentCategory = "araba";
+let index = 0;
+
+function setCategory(cat){
+    currentCategory = cat;
+    index = 0;
+    play();
+}
+
+function play(){
+    let list = ads[currentCategory];
+    let video = document.getElementById("player");
+
+    if(list.length === 0){
+        setTimeout(play, 2000);
+        return;
+    }
+
+    video.src = list[index];
+    video.play();
+
+    video.onended = function(){
+        index++;
+        if(index >= list.length){
+            index = 0;
+        }
+        play();
+    }
+}
+
+play();
+
+</script>
+
+</body>
+</html>
