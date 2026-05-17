@@ -10,7 +10,6 @@ body{
     font-family:Arial;
     background:black;
     color:white;
-    overflow:hidden;
     padding-top:60px;
 }
 
@@ -48,16 +47,14 @@ body{
 .container{
     display:flex;
     height:calc(100vh - 60px);
-    position:fixed;
-    width:100%;
 }
 
 /* MENU */
 .menu{
-    width:25%;
+    width:30%;
     background:#1a1a1a;
-    padding:10px;
     overflow-y:auto;
+    padding:10px;
     box-sizing:border-box;
 }
 
@@ -81,7 +78,7 @@ body{
     padding:10px;
 }
 
-.track{
+.track-list div{
     padding:8px;
     margin-bottom:6px;
     background:#333;
@@ -89,17 +86,17 @@ body{
     border-radius:5px;
 }
 
-.track:hover{
+.track-list div:hover{
     background:red;
 }
 
 /* SCREEN */
 .screen{
-    width:75%;
+    width:70%;
+    background:black;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:black;
 }
 
 video{
@@ -112,135 +109,88 @@ video{
 
 <body>
 
-<header class="topbar">
+<!-- HEADER -->
+<div class="topbar">
     <div class="title">📺 DİJİTAL REKLAM TV</div>
     <div class="action" onclick="reklamVer()">📢 Reklam Ver</div>
-</header>
+</div>
 
 <div class="container">
 
 <!-- MENU -->
 <div class="menu">
 
-<div class="category"><h3 onclick="toggle('trend')">🛍 Trend Ürünler</h3>
-<div class="track-list" id="trend">
-<div class="track" onclick="play('Trend','https://www.w3schools.com/html/movie.mp4')">Trend Video</div>
-</div></div>
+<div class="category">
+<h3 onclick="toggleList('yeniyayinlar')">🆕 Yeni Yayınlar</h3>
 
-<div class="category"><h3 onclick="toggle('araba')">🚗 Otomobil</h3>
+<div class="track-list" id="yeniyayinlar">
+
+    <div onclick="playTrack('Ben Kalırım Yeni','BEN.KALIRIM.YENİ.mp3')">
+        🎵 BEN KALIRIM (YENİ)
+    </div>
+
+    <div onclick="playTrack('Belalı Yarim','belali_yarim_video.mp4')">
+        🎬 BELALI YARİM
+    </div>
+
+</div>
+</div>
+
+<div class="category">
+<h3 onclick="toggleList('araba')">🚗 Otomobil</h3>
 <div class="track-list" id="araba">
-<div class="track" onclick="play('Araba','https://www.w3schools.com/html/mov_bbb.mp4')">Otomobil Reklam</div>
-</div></div>
+    <div onclick="playTrack('Araba Reklam','https://www.w3schools.com/html/mov_bbb.mp4')">
+        🚗 Araba Tanıtım
+    </div>
+</div>
+</div>
 
-<div class="category"><h3 onclick="toggle('teknoloji')">📱 Teknoloji</h3>
+<div class="category">
+<h3 onclick="toggleList('teknoloji')">📱 Teknoloji</h3>
 <div class="track-list" id="teknoloji">
-<div class="track" onclick="play('Teknoloji','https://www.w3schools.com/html/movie.mp4')">Teknoloji Reklam</div>
-</div></div>
+    <div onclick="playTrack('Telefon','https://www.w3schools.com/html/movie.mp4')">
+        📱 Telefon Reklam
+    </div>
+</div>
+</div>
 
-<div class="category"><h3 onclick="toggle('yerel')">🏪 Yerel Firmalar</h3>
-<div class="track-list" id="yerel">
-<div class="track" onclick="play('Yerel','https://www.w3schools.com/html/movie.mp4')">Yerel Firma</div>
-</div></div>
+<div class="category">
+<h3 onclick="toggleList('trend')">🛍 Trend Ürünler</h3>
+<div class="track-list" id="trend">
+    <div onclick="playTrack('Trend','https://www.w3schools.com/html/movie.mp4')">
+        🛍 Trend Ürün
+    </div>
+</div>
+</div>
 
-<div class="category"><h3 onclick="toggle('muzik')">🎵 Müzik Klip</h3>
+<div class="category">
+<h3 onclick="toggleList('muzik')">🎵 Müzik</h3>
 <div class="track-list" id="muzik">
-<div class="track" onclick="play('Müzik','https://www.w3schools.com/html/movie.mp4')">Müzik Klip</div>
-    
-<div onclick="playTrack('Belalı Yarim','belali_yarim_video.mp4')">
-    <span>🎬</span> BELALI YARIM video söz müzik: SK
-</div> 
-
-    
-<div class="category"><h3 onclick="toggle('mobilya')">🪑 Mobilya</h3>
-<div class="track-list" id="mobilya">
-<div class="track" onclick="play('Mobilya','https://www.w3schools.com/html/movie.mp4')">Mobilya Reklam</div>
-</div></div>
-
-
-<div class="category"><h3 onclick="toggle('aksesuar')">⌚ Ev ve Yaşam</h3>
-<div class="track-list" id="aksesuar">
-<div class="track" onclick="play('Ev','https://www.w3schools.com/html/movie.mp4')">Ev Yaşam</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('spor')">⚽ Spor</h3>
-<div class="track-list" id="spor">
-<div class="track" onclick="play('Spor','https://www.w3schools.com/html/movie.mp4')">Spor Ürün</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('giyim')">👕 Giyim</h3>
-<div class="track-list" id="giyim">
-<div class="track" onclick="play('Giyim','https://www.w3schools.com/html/movie.mp4')">Giyim Reklam</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('taki')">💍 Takı</h3>
-<div class="track-list" id="taki">
-<div class="track" onclick="play('Takı','https://www.w3schools.com/html/movie.mp4')">Takı Reklam</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('canta')">👜 Çanta</h3>
-<div class="track-list" id="canta">
-<div class="track" onclick="play('Çanta','https://www.w3schools.com/html/movie.mp4')">Çanta Reklam</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('servis')">🚚 Eve Servis</h3>
-<div class="track-list" id="servis">
-<div class="track" onclick="play('Servis','https://www.w3schools.com/html/mov_bbb.mp4')">Servis Reklam</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('dekorasyon')">🏠 Dekorasyon</h3>
-<div class="track-list" id="dekorasyon">
-<div class="track" onclick="play('Dekor','https://www.w3schools.com/html/movie.mp4')">Dekorasyon</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('tamir')">🔧 Tamir</h3>
-<div class="track-list" id="tamir">
-<div class="track" onclick="play('Tamir','https://www.w3schools.com/html/movie.mp4')">Tamir Hizmeti</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('teknik_servis')">🛠 Teknik Servis</h3>
-<div class="track-list" id="teknik_servis">
-<div class="track" onclick="play('Servis','https://www.w3schools.com/html/movie.mp4')">Teknik Servis</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('nakliye')">🚚 Nakliye</h3>
-<div class="track-list" id="nakliye">
-<div class="track" onclick="play('Nakliye','https://www.w3schools.com/html/movie.mp4')">Nakliye</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('uretim')">🏭 Üretim</h3>
-<div class="track-list" id="uretim">
-<div class="track" onclick="play('Üretim','https://www.w3schools.com/html/movie.mp4')">Üretim</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('market')">🛒 Market</h3>
-<div class="track-list" id="market">
-<div class="track" onclick="play('Market','https://www.w3schools.com/html/movie.mp4')">Market Reklam</div>
-</div></div>
-
-<div class="category"><h3 onclick="toggle('kisisel')">🧑 Kişisel Reklamlar</h3>
-<div class="track-list" id="kisisel">
-<div class="track" onclick="play('Kişisel','https://www.w3schools.com/html/movie.mp4')">Kişisel Reklam</div>
-</div></div>
+    <div onclick="playTrack('Müzik Klip','https://www.w3schools.com/html/movie.mp4')">
+        🎵 Klip
+    </div>
+</div>
+</div>
 
 </div>
 
 <!-- SCREEN -->
 <div class="screen">
-    <video id="player" autoplay muted></video>
+    <video id="player" controls autoplay></video>
 </div>
 
 </div>
 
 <script>
 
-function toggle(id){
-    let el=document.getElementById(id);
-    el.style.display = el.style.display==="block" ? "none":"block";
+function toggleList(id){
+    let el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
 }
 
-function play(name,file){
-    let v=document.getElementById("player");
-    v.src=file;
+function playTrack(name,file){
+    let v = document.getElementById("player");
+    v.src = file;
     v.play();
 }
 
