@@ -1,15 +1,17 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
+app.use(cors()); // 🔥 FRONTEND BAĞLANTI İÇİN ÇOK ÖNEMLİ
 
 /* =====================================
    📁 VİDEO DOSYALARI ERİŞİMİ
 ===================================== */
-app.use("/videos", express.static("videos"));
+app.use("/videos", express.static(path.join(__dirname, "videos")));
 
 /* =====================================
    📂 KATEGORİLER
@@ -22,7 +24,7 @@ const categories = [
 ];
 
 /* =====================================
-   📁 OTOMATİK KLASÖR + JSON SİSTEMİ
+   📁 SİSTEM KURULUMU
 ===================================== */
 function initSystem(){
 
@@ -38,11 +40,11 @@ function initSystem(){
         let file = path.join("ads", `${cat}.json`);
 
         if(!fs.existsSync(file)){
-            fs.writeFileSync(file, "[]");
+            fs.writeFileSync(file, "[]", "utf8");
         }
     });
 
-    console.log("✅ Sistem hazır: ads + videos aktif");
+    console.log("✅ Sistem hazır (ads + videos)");
 }
 
 initSystem();
@@ -51,7 +53,13 @@ initSystem();
    📥 KATEGORİ OKU
 ===================================== */
 function loadCategory(cat){
+
     let file = path.join("ads", `${cat}.json`);
+
+    if(!fs.existsSync(file)){
+        fs.writeFileSync(file, "[]");
+    }
+
     return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
@@ -60,11 +68,11 @@ function loadCategory(cat){
 ===================================== */
 function saveCategory(cat, data){
     let file = path.join("ads", `${cat}.json`);
-    fs.writeFileSync(file, JSON.stringify(data, null, 2));
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf8");
 }
 
 /* =====================================
-   💰 FİYAT HESAPLAMA
+   💰 FİYAT SİSTEMİ
 ===================================== */
 function calculatePrice(category, duration){
 
@@ -100,35 +108,45 @@ function calculatePrice(category, duration){
 }
 
 /* =====================================
-   📥 REKLAM EKLE (API)
+   📥 REKLAM EKLE
 ===================================== */
 app.post("/add", (req, res) => {
 
-    let { category, title, videoUrl, duration } = req.body;
+    try{
 
-    if(!categories.includes(category)){
-        return res.status(400).json({error:"Geçersiz kategori"});
+        let { category, title, videoUrl, duration } = req.body;
+
+        if(!categories.includes(category)){
+            return res.status(400).json({error:"Geçersiz kategori"});
+        }
+
+        if(!title || !videoUrl){
+            return res.status(400).json({error:"Eksik veri"});
+        }
+
+        let ads = loadCategory(category);
+
+        let newAd = {
+            id: Date.now(),
+            title,
+            category,
+            videoUrl,
+            duration: duration || "günlük",
+            price: calculatePrice(category, duration),
+            createdAt: new Date()
+        };
+
+        ads.push(newAd);
+        saveCategory(category, ads);
+
+        res.json({
+            message: "✔ Reklam eklendi",
+            ad: newAd
+        });
+
+    }catch(err){
+        res.status(500).json({error:"Server hatası"});
     }
-
-    let ads = loadCategory(category);
-
-    let newAd = {
-        id: Date.now(),
-        title,
-        category,
-        videoUrl,
-        duration,
-        price: calculatePrice(category, duration),
-        createdAt: new Date()
-    };
-
-    ads.push(newAd);
-    saveCategory(category, ads);
-
-    res.json({
-        message: "✔ Reklam eklendi",
-        ad: newAd
-    });
 });
 
 /* =====================================
@@ -149,7 +167,14 @@ app.get("/ads", (req, res) => {
    📂 TEK KATEGORİ
 ===================================== */
 app.get("/ads/:category", (req, res) => {
-    res.json(loadCategory(req.params.category));
+
+    let cat = req.params.category;
+
+    if(!categories.includes(cat)){
+        return res.status(400).json({error:"Geçersiz kategori"});
+    }
+
+    res.json(loadCategory(cat));
 });
 
 /* =====================================
