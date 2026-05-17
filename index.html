@@ -300,14 +300,14 @@ video{
 
 <script>
 
-function toggleMenu(btn){
-    let menu = btn.nextElementSibling;
+function playSingle(cat, i){
+    let video = document.getElementById("player");
 
-    if(menu.style.maxHeight){
-        menu.style.maxHeight = null;
-    } else {
-        menu.style.maxHeight = menu.scrollHeight + "px";
-    }
+    if(!ads[cat] || !ads[cat][i]) return;
+
+    video.src = ads[cat][i];
+    video.play();
+}
 }
 
 // WHATSAPP
