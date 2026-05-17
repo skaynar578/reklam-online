@@ -1,1 +1,19 @@
 
+araba.json
+teknoloji.json
+trend.json
+yerel.json
+muzik.json
+mobilya.json
+aksesuar.json
+giyim.json
+taki.json
+canta.json
+servis.json
+dekorasyon.json
+tamir.json
+nakliye.json
+uretim.json
+market.json
+kisisel.json
+spor.json
