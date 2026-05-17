@@ -159,31 +159,41 @@ video{
 
 /* 🔥 REKLAM VERİLERİ */
 let ads = {
-    trend:[
-        "https://www.w3schools.com/html/movie.mp4",
-        "https://www.w3schools.com/html/mov_bbb.mp4"
-    ],
-    araba:[
-        "https://www.w3schools.com/html/movie.mp4"
-    ],
-    muzik:[
-        "https://www.w3schools.com/html/mov_bbb.mp4"
-    ],
-    yerel:[
-        "https://www.w3schools.com/html/movie.mp4"
-    ]
+    trend:["video/trend1.mp4","video/trend2.mp4"],
+    araba:["video/araba1.mp4"],
+    teknoloji:["video/tech1.mp4"],
+    yerel:["video/firma1.mp4"],
+    muzik:["video/muzik1.mp4"],
+    mobilya:["video/mobilya1.mp4"],
+    aksesuar:["video/aksesuar1.mp4"],
+    spor:["video/spor1.mp4"],
+    giyim:["video/giyim1.mp4"],
+    taki:["video/taki1.mp4"],
+    canta:["video/canta1.mp4"],
+    servis:["video/servis1.mp4"],
+    dekorasyon:["video/dekor.mp4"],
+    tamir:["video/tamir.mp4"],
+    teknik_servis:["video/teknik.mp4"],
+    nakliye:["video/nakliye.mp4"],
+    uretim:["video/uretim.mp4"],
+    market:["video/market.mp4"],
+    kisisel:["video/kisisel.mp4"]
 };
 
 let currentCategory = "trend";
+let index = 0;
 
-/* ▶️ OYNAT */
-function playAd(cat,index){
+function playSingle(cat,i){
     currentCategory = cat;
+    index = i;
 
     let video = document.getElementById("player");
 
-    video.src = ads[cat][index];
+    if(!ads[cat] || !ads[cat][i]) return;
+
+    video.src = ads[cat][i];
     video.play();
+}
 }
 
 /* 📂 MENU AÇ/KAPA */
