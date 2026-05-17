@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+
 const app = express();
 
 app.use(express.json());
@@ -21,9 +22,9 @@ const categories = [
 ];
 
 /* =====================================
-   📁 OTOMATİK KLASÖR + JSON
+   📁 OTOMATİK KLASÖR + JSON SİSTEMİ
 ===================================== */
-function initFolders(){
+function initSystem(){
 
     if(!fs.existsSync("ads")){
         fs.mkdirSync("ads");
@@ -41,27 +42,21 @@ function initFolders(){
         }
     });
 
-    console.log("✅ Sistem hazır (ads + videos)");
+    console.log("✅ Sistem hazır: ads + videos aktif");
 }
 
-initFolders();
+initSystem();
 
 /* =====================================
    📥 KATEGORİ OKU
 ===================================== */
 function loadCategory(cat){
-
     let file = path.join("ads", `${cat}.json`);
-
-    if(!fs.existsSync(file)){
-        fs.writeFileSync(file, "[]");
-    }
-
     return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
 /* =====================================
-   💾 KATEGORİ YAZ
+   💾 KATEGORİ KAYDET
 ===================================== */
 function saveCategory(cat, data){
     let file = path.join("ads", `${cat}.json`);
@@ -69,7 +64,7 @@ function saveCategory(cat, data){
 }
 
 /* =====================================
-   💰 FİYAT SİSTEMİ
+   💰 FİYAT HESAPLAMA
 ===================================== */
 function calculatePrice(category, duration){
 
@@ -105,31 +100,30 @@ function calculatePrice(category, duration){
 }
 
 /* =====================================
-   📥 REKLAM EKLE
+   📥 REKLAM EKLE (API)
 ===================================== */
 app.post("/add", (req, res) => {
 
-    let cat = req.body.category;
+    let { category, title, videoUrl, duration } = req.body;
 
-    if(!categories.includes(cat)){
+    if(!categories.includes(category)){
         return res.status(400).json({error:"Geçersiz kategori"});
     }
 
-    let ads = loadCategory(cat);
+    let ads = loadCategory(category);
 
     let newAd = {
         id: Date.now(),
-        title: req.body.title,
-        category: cat,
-        videoUrl: req.body.videoUrl,
-        duration: req.body.duration,
-        price: calculatePrice(cat, req.body.duration),
+        title,
+        category,
+        videoUrl,
+        duration,
+        price: calculatePrice(category, duration),
         createdAt: new Date()
     };
 
     ads.push(newAd);
-
-    saveCategory(cat, ads);
+    saveCategory(category, ads);
 
     res.json({
         message: "✔ Reklam eklendi",
@@ -145,8 +139,7 @@ app.get("/ads", (req, res) => {
     let all = [];
 
     categories.forEach(cat=>{
-        let data = loadCategory(cat);
-        all = all.concat(data);
+        all = all.concat(loadCategory(cat));
     });
 
     res.json(all);
@@ -160,15 +153,22 @@ app.get("/ads/:category", (req, res) => {
 });
 
 /* =====================================
-   📊 KATEGORİ LİSTESİ
+   📊 KATEGORİLER
 ===================================== */
 app.get("/categories", (req, res) => {
     res.json(categories);
 });
 
 /* =====================================
-   🚀 SERVER START
+   🧪 TEST ROUTE
+===================================== */
+app.get("/", (req, res) => {
+    res.send("🔥 Dijital Reklam TV Backend Çalışıyor");
+});
+
+/* =====================================
+   🚀 SERVER
 ===================================== */
 app.listen(3000, () => {
-    console.log("🔥 DİJİTAL REKLAM TV FULL SİSTEM AKTİF");
+    console.log("🔥 DİJİTAL REKLAM TV FULL SİSTEM AKTİF (PORT 3000)");
 });
