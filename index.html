@@ -166,6 +166,11 @@ video{
 <button onclick="toggleMenu(this)">🎵 MÜZİK</button>
 <div class="submenu">
     <div onclick="playSingle('muzik',0)">🎵 Müzik Reklam</div>
+    <div onclick="playSingle('muzik',1)">🎵 Belalı Yarim</div>
+</div>
+</div>
+
+
 </div>
 </div>
 
@@ -319,11 +324,15 @@ function playSingle(cat,i){
     index = i;
 
     let video = document.getElementById("player");
-    let list = ads[cat] || [];
+    let list = ads[cat];
 
-    if(!list.length) return;
+    if(!list || !list[i]) {
+        console.log("Video bulunamadı:", cat, i);
+        return;
+    }
 
     video.src = list[i];
+    video.load();
     video.play();
 }
 
@@ -332,7 +341,6 @@ function reklamVer(){
     let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum. Kategori: ${currentCategory}`;
     window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
 }
-
 </script>
 
 </body>
