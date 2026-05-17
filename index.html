@@ -112,13 +112,9 @@ video{
 
 <body>
 
-<!-- HEADER -->
 <header class="topbar">
     <div class="title">📺 DİJİTAL REKLAM TV</div>
-
-    <div class="action" onclick="reklamVer()">
-        📢 Reklam Ver / WhatsApp
-    </div>
+    <div class="action" onclick="reklamVer()">📢 Reklam Ver</div>
 </header>
 
 <div class="container">
@@ -126,41 +122,100 @@ video{
 <!-- MENU -->
 <div class="menu">
 
-<!-- KATEGORİLER -->
-<div class="category">
-<h3 onclick="toggle('trend')">🛍 Trend Ürünler</h3>
+<div class="category"><h3 onclick="toggle('trend')">🛍 Trend Ürünler</h3>
 <div class="track-list" id="trend">
-<div class="track" onclick="play('Trend Reklam 1','https://www.w3schools.com/html/movie.mp4')">Trend Video 1</div>
-</div>
-</div>
+<div class="track" onclick="play('Trend','https://www.w3schools.com/html/movie.mp4')">Trend Video</div>
+</div></div>
 
-<div class="category">
-<h3 onclick="toggle('araba')">🚗 Otomobil</h3>
+<div class="category"><h3 onclick="toggle('araba')">🚗 Otomobil</h3>
 <div class="track-list" id="araba">
-<div class="track" onclick="play('Araba Reklam','https://www.w3schools.com/html/mov_bbb.mp4')">Araba Tanıtım</div>
-</div>
-</div>
+<div class="track" onclick="play('Araba','https://www.w3schools.com/html/mov_bbb.mp4')">Otomobil Reklam</div>
+</div></div>
 
-<div class="category">
-<h3 onclick="toggle('teknoloji')">📱 Teknoloji</h3>
+<div class="category"><h3 onclick="toggle('teknoloji')">📱 Teknoloji</h3>
 <div class="track-list" id="teknoloji">
-<div class="track" onclick="play('Telefon Reklam','https://www.w3schools.com/html/movie.mp4')">Telefon Tanıtım</div>
-</div>
-</div>
+<div class="track" onclick="play('Teknoloji','https://www.w3schools.com/html/movie.mp4')">Teknoloji Reklam</div>
+</div></div>
 
-<div class="category">
-<h3 onclick="toggle('muzik')">🎵 Müzik Tanıtım</h3>
-<div class="track-list" id="muzik">
-<div class="track" onclick="play('Müzik Klip','https://www.w3schools.com/html/movie.mp4')">Klip İzle</div>
-</div>
-</div>
-
-<div class="category">
-<h3 onclick="toggle('yerel')">🏪 Yerel Firmalar</h3>
+<div class="category"><h3 onclick="toggle('yerel')">🏪 Yerel Firmalar</h3>
 <div class="track-list" id="yerel">
-<div class="track" onclick="play('Yerel Reklam','https://www.w3schools.com/html/mov_bbb.mp4')">Firma Tanıtım</div>
-</div>
-</div>
+<div class="track" onclick="play('Yerel','https://www.w3schools.com/html/movie.mp4')">Yerel Firma</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('muzik')">🎵 Müzik Klip</h3>
+<div class="track-list" id="muzik">
+<div class="track" onclick="play('Müzik','https://www.w3schools.com/html/movie.mp4')">Müzik Klip</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('mobilya')">🪑 Mobilya</h3>
+<div class="track-list" id="mobilya">
+<div class="track" onclick="play('Mobilya','https://www.w3schools.com/html/movie.mp4')">Mobilya Reklam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('aksesuar')">⌚ Ev ve Yaşam</h3>
+<div class="track-list" id="aksesuar">
+<div class="track" onclick="play('Ev','https://www.w3schools.com/html/movie.mp4')">Ev Yaşam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('spor')">⚽ Spor</h3>
+<div class="track-list" id="spor">
+<div class="track" onclick="play('Spor','https://www.w3schools.com/html/movie.mp4')">Spor Ürün</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('giyim')">👕 Giyim</h3>
+<div class="track-list" id="giyim">
+<div class="track" onclick="play('Giyim','https://www.w3schools.com/html/movie.mp4')">Giyim Reklam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('taki')">💍 Takı</h3>
+<div class="track-list" id="taki">
+<div class="track" onclick="play('Takı','https://www.w3schools.com/html/movie.mp4')">Takı Reklam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('canta')">👜 Çanta</h3>
+<div class="track-list" id="canta">
+<div class="track" onclick="play('Çanta','https://www.w3schools.com/html/movie.mp4')">Çanta Reklam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('servis')">🚚 Eve Servis</h3>
+<div class="track-list" id="servis">
+<div class="track" onclick="play('Servis','https://www.w3schools.com/html/mov_bbb.mp4')">Servis Reklam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('dekorasyon')">🏠 Dekorasyon</h3>
+<div class="track-list" id="dekorasyon">
+<div class="track" onclick="play('Dekor','https://www.w3schools.com/html/movie.mp4')">Dekorasyon</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('tamir')">🔧 Tamir</h3>
+<div class="track-list" id="tamir">
+<div class="track" onclick="play('Tamir','https://www.w3schools.com/html/movie.mp4')">Tamir Hizmeti</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('teknik_servis')">🛠 Teknik Servis</h3>
+<div class="track-list" id="teknik_servis">
+<div class="track" onclick="play('Servis','https://www.w3schools.com/html/movie.mp4')">Teknik Servis</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('nakliye')">🚚 Nakliye</h3>
+<div class="track-list" id="nakliye">
+<div class="track" onclick="play('Nakliye','https://www.w3schools.com/html/movie.mp4')">Nakliye</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('uretim')">🏭 Üretim</h3>
+<div class="track-list" id="uretim">
+<div class="track" onclick="play('Üretim','https://www.w3schools.com/html/movie.mp4')">Üretim</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('market')">🛒 Market</h3>
+<div class="track-list" id="market">
+<div class="track" onclick="play('Market','https://www.w3schools.com/html/movie.mp4')">Market Reklam</div>
+</div></div>
+
+<div class="category"><h3 onclick="toggle('kisisel')">🧑 Kişisel Reklamlar</h3>
+<div class="track-list" id="kisisel">
+<div class="track" onclick="play('Kişisel','https://www.w3schools.com/html/movie.mp4')">Kişisel Reklam</div>
+</div></div>
 
 </div>
 
@@ -173,27 +228,19 @@ video{
 
 <script>
 
-let currentCategory = "";
+function toggle(id){
+    let el=document.getElementById(id);
+    el.style.display = el.style.display==="block" ? "none":"block";
+}
+
+function play(name,file){
+    let v=document.getElementById("player");
+    v.src=file;
+    v.play();
+}
 
 function reklamVer(){
-    let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
-Kategori: ${currentCategory}`;
-
-    window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj), "_blank");
-}
-
-/* KATEGORİ AÇ/KAPAT */
-function toggle(id){
-    let el = document.getElementById(id);
-    el.style.display = (el.style.display === "block") ? "none" : "block";
-    currentCategory = id;
-}
-
-/* VİDEO OYNAT */
-function play(name,file){
-    let video = document.getElementById("player");
-    video.src = file;
-    video.play();
+    window.open("https://wa.me/905074163605?text=Reklam%20vermek%20istiyorum","_blank");
 }
 
 </script>
