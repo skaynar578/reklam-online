@@ -90,7 +90,7 @@ body{
     background:red;
 }
 
-/* ALT KUTU */
+/* ALT KUTULAR */
 .submenu{
     max-height:0;
     overflow:hidden;
@@ -110,19 +110,16 @@ body{
     background:green;
 }
 
-/* UPLOAD BOX (YENİ EKLENDİ AMA TASARIM BOZMADI) */
+/* 🔥 SADECE EKLENEN UPLOAD TASARIMI */
 .upload-box{
     background:#222;
     padding:10px;
     margin-top:5px;
     border-radius:6px;
+    color:#bbb;
+    font-size:14px;
+    text-align:center;
     border:1px dashed #444;
-    font-size:13px;
-}
-
-.upload-box input{
-    width:100%;
-    color:white;
 }
 
 /* VIDEO */
@@ -153,13 +150,10 @@ video{
 <div class="category">
 <button onclick="toggleMenu(this)">🛍 TREND ÜRÜNLER</button>
 <div class="submenu">
-
-<div class="upload-box">
-<input type="file" accept="video/*" onchange="uploadVideo(event,'trend')">
-</div>
-
-<div onclick="playSingle('trend',0)">🔥 Trend Reklam 1</div>
-
+    <div class="upload-box">
+        <input type="file" accept="video/*" onchange="uploadVideo(event,'trend')">
+    </div>
+    <div onclick="playSingle('trend',0)">🔥 Trend Reklam 1</div>
 </div>
 </div>
 
@@ -167,13 +161,10 @@ video{
 <div class="category">
 <button onclick="toggleMenu(this)">🚗 OTOMOBİL ALIM-SATIM</button>
 <div class="submenu">
-
-<div class="upload-box">
-<input type="file" accept="video/*" onchange="uploadVideo(event,'araba')">
-</div>
-
-<div onclick="playSingle('araba',0)">🚗 Araba Reklam 1</div>
-
+    <div class="upload-box">
+        <input type="file" accept="video/*" onchange="uploadVideo(event,'araba')">
+    </div>
+    <div onclick="playSingle('araba',0)">🚗 Araba Reklam 1</div>
 </div>
 </div>
 
@@ -181,11 +172,9 @@ video{
 <div class="category">
 <button onclick="toggleMenu(this)">📱 TEKNOLOJİ ÜRÜNLERİ</button>
 <div class="submenu">
-
-<div class="upload-box">
-<input type="file" accept="video/*" onchange="uploadVideo(event,'teknoloji')">
-</div>
-
+    <div class="upload-box">
+        <input type="file" accept="video/*" onchange="uploadVideo(event,'teknoloji')">
+    </div>
 </div>
 </div>
 
@@ -193,13 +182,10 @@ video{
 <div class="category">
 <button onclick="toggleMenu(this)">🏪 YEREL FİRMA İLANLARI</button>
 <div class="submenu">
-
-<div class="upload-box">
-<input type="file" accept="video/*" onchange="uploadVideo(event,'yerel')">
-</div>
-
-<div onclick="playSingle('yerel',0)">🏪 Firma 1</div>
-
+    <div class="upload-box">
+        <input type="file" accept="video/*" onchange="uploadVideo(event,'yerel')">
+    </div>
+    <div onclick="playSingle('yerel',0)">🏪 Firma 1</div>
 </div>
 </div>
 
@@ -207,21 +193,15 @@ video{
 <div class="category">
 <button onclick="toggleMenu(this)">🎵 MÜZİK PİYASASI</button>
 <div class="submenu">
-
-<div class="upload-box">
-<input type="file" accept="video/*" onchange="uploadVideo(event,'muzik')">
-</div>
-
-<div onclick="playSingle('muzik',0)">🎵 Klip 1</div>
-
+    <div class="upload-box">
+        <input type="file" accept="video/*" onchange="uploadVideo(event,'muzik')">
+    </div>
+    <div onclick="playSingle('muzik',0)">🎵 Klip 1</div>
 </div>
 </div>
 
-<!-- (DİĞER KATEGORİLER AYNI MANTIKTA DEVAM EDER) -->
-
 </div>
 
-<!-- SCREEN -->
 <div class="screen">
     <video id="player" autoplay muted controls></video>
 </div>
@@ -230,6 +210,20 @@ video{
 
 <script>
 
+function toggleMenu(btn){
+    let menu = btn.nextElementSibling;
+    menu.style.maxHeight = menu.style.maxHeight ? null : menu.scrollHeight + "px";
+}
+
+// WHATSAPP
+function reklamVer(){
+    let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
+Kategori: ${currentCategory}`;
+
+    window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
+}
+
+// ADS
 let ads = {
     trend: [],
     araba: [],
@@ -241,19 +235,14 @@ let ads = {
 let currentCategory = "trend";
 let index = 0;
 
-/* MENU */
-function toggleMenu(btn){
-    let menu = btn.nextElementSibling;
-    menu.style.maxHeight = menu.style.maxHeight ? null : menu.scrollHeight + "px";
-}
-
-/* VIDEO UPLOAD */
+// UPLOAD
 function uploadVideo(event, cat){
     let file = event.target.files[0];
     if(!file) return;
 
     let url = URL.createObjectURL(file);
 
+    if(!ads[cat]) ads[cat] = [];
     ads[cat].push(url);
 
     currentCategory = cat;
@@ -262,7 +251,7 @@ function uploadVideo(event, cat){
     play();
 }
 
-/* PLAY */
+// PLAY
 function play(){
     let video = document.getElementById("player");
     let list = ads[currentCategory];
@@ -273,20 +262,14 @@ function play(){
     video.play();
 }
 
-/* SEÇ */
+// SEÇ
 function playSingle(cat,i){
     currentCategory = cat;
     index = i;
     play();
 }
 
-/* WHATSAPP */
-function reklamVer(){
-    let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
-Kategori: ${currentCategory}`;
-
-    window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
-}
+play();
 
 </script>
 
