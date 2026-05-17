@@ -90,15 +90,28 @@ body{
     background:red;
 }
 
-/* ALT MENÜ */
+/* ALT KUTU */
 .submenu{
     max-height:0;
     overflow:hidden;
     transition:0.3s;
 }
 
-/* UPLOAD */
-.upload{
+.submenu div{
+    background:#222;
+    padding:10px;
+    margin-top:5px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.submenu div:hover{
+    background:green;
+}
+
+/* UPLOAD BOX (YENİ EKLENDİ AMA TASARIM BOZMADI) */
+.upload-box{
     background:#222;
     padding:10px;
     margin-top:5px;
@@ -107,7 +120,7 @@ body{
     font-size:13px;
 }
 
-.upload input{
+.upload-box input{
     width:100%;
     color:white;
 }
@@ -126,7 +139,7 @@ video{
 <body>
 
 <header class="topbar">
-    <div class="title">📺 reklam online DİJİTAL REKLAM</div>
+    <div class="title">📺reklam online DİJİTAL REKLAM</div>
     <div class="action" onclick="reklamVer()">📢 Reklam Ver / WhatsApp</div>
 </header>
 
@@ -134,35 +147,77 @@ video{
 
 <div class="menu">
 
+<h3>📂 Kategoriler</h3>
+
 <!-- TREND -->
 <div class="category">
 <button onclick="toggleMenu(this)">🛍 TREND ÜRÜNLER</button>
 <div class="submenu">
-    <div class="upload">
-        <input type="file" accept="video/*" onchange="uploadVideo(event,'trend')">
-    </div>
+
+<div class="upload-box">
+<input type="file" accept="video/*" onchange="uploadVideo(event,'trend')">
+</div>
+
+<div onclick="playSingle('trend',0)">🔥 Trend Reklam 1</div>
+
 </div>
 </div>
 
 <!-- ARABA -->
 <div class="category">
-<button onclick="toggleMenu(this)">🚗 OTOMOBİL</button>
+<button onclick="toggleMenu(this)">🚗 OTOMOBİL ALIM-SATIM</button>
 <div class="submenu">
-    <div class="upload">
-        <input type="file" accept="video/*" onchange="uploadVideo(event,'araba')">
-    </div>
+
+<div class="upload-box">
+<input type="file" accept="video/*" onchange="uploadVideo(event,'araba')">
+</div>
+
+<div onclick="playSingle('araba',0)">🚗 Araba Reklam 1</div>
+
 </div>
 </div>
 
 <!-- TEKNOLOJİ -->
 <div class="category">
-<button onclick="toggleMenu(this)">📱 TEKNOLOJİ</button>
+<button onclick="toggleMenu(this)">📱 TEKNOLOJİ ÜRÜNLERİ</button>
 <div class="submenu">
-    <div class="upload">
-        <input type="file" accept="video/*" onchange="uploadVideo(event,'teknoloji')">
-    </div>
+
+<div class="upload-box">
+<input type="file" accept="video/*" onchange="uploadVideo(event,'teknoloji')">
+</div>
+
 </div>
 </div>
+
+<!-- YEREL -->
+<div class="category">
+<button onclick="toggleMenu(this)">🏪 YEREL FİRMA İLANLARI</button>
+<div class="submenu">
+
+<div class="upload-box">
+<input type="file" accept="video/*" onchange="uploadVideo(event,'yerel')">
+</div>
+
+<div onclick="playSingle('yerel',0)">🏪 Firma 1</div>
+
+</div>
+</div>
+
+<!-- MÜZİK -->
+<div class="category">
+<button onclick="toggleMenu(this)">🎵 MÜZİK PİYASASI</button>
+<div class="submenu">
+
+<div class="upload-box">
+<input type="file" accept="video/*" onchange="uploadVideo(event,'muzik')">
+</div>
+
+<div onclick="playSingle('muzik',0)">🎵 Klip 1</div>
+
+</div>
+</div>
+
+<!-- (DİĞER KATEGORİLER AYNI MANTIKTA DEVAM EDER) -->
 
 </div>
 
@@ -178,24 +233,21 @@ video{
 let ads = {
     trend: [],
     araba: [],
-    teknoloji: []
+    teknoloji: [],
+    yerel: [],
+    muzik: []
 };
 
 let currentCategory = "trend";
 let index = 0;
 
-/* MENU AÇ-KAPA */
+/* MENU */
 function toggleMenu(btn){
     let menu = btn.nextElementSibling;
-
-    if(menu.style.maxHeight){
-        menu.style.maxHeight = null;
-    } else {
-        menu.style.maxHeight = menu.scrollHeight + "px";
-    }
+    menu.style.maxHeight = menu.style.maxHeight ? null : menu.scrollHeight + "px";
 }
 
-/* VIDEO YÜKLE */
+/* VIDEO UPLOAD */
 function uploadVideo(event, cat){
     let file = event.target.files[0];
     if(!file) return;
@@ -210,7 +262,7 @@ function uploadVideo(event, cat){
     play();
 }
 
-/* OYNAT */
+/* PLAY */
 function play(){
     let video = document.getElementById("player");
     let list = ads[currentCategory];
@@ -219,6 +271,13 @@ function play(){
 
     video.src = list[index];
     video.play();
+}
+
+/* SEÇ */
+function playSingle(cat,i){
+    currentCategory = cat;
+    index = i;
+    play();
 }
 
 /* WHATSAPP */
