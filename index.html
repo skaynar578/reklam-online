@@ -90,31 +90,26 @@ body{
     background:red;
 }
 
-/* ALT MENÜ */
+/* ALT KUTULAR */
 .submenu{
     max-height:0;
     overflow:hidden;
     transition:0.3s;
 }
 
-/* UPLOAD BOX */
-.upload-box{
+.submenu div{
     background:#222;
     padding:10px;
     margin-top:5px;
     border-radius:6px;
-    color:#bbb;
+    cursor:pointer;
     font-size:14px;
-    text-align:center;
-    border:1px dashed #444;
 }
 
-.upload-box input{
-    width:100%;
-    color:white;
+.submenu div:hover{
+    background:green;
 }
 
-/* VIDEO */
 video{
     width:100%;
     height:100%;
@@ -128,7 +123,7 @@ video{
 <body>
 
 <header class="topbar">
-    <div class="title">📺 reklam online DİJİTAL REKLAM</div>
+    <div class="title">📺reklam online DİJİTAL REKLAM </div>
     <div class="action" onclick="reklamVer()">📢 Reklam Ver / WhatsApp</div>
 </header>
 
@@ -136,56 +131,163 @@ video{
 
 <div class="menu">
 
-<!-- KATEGORİLER -->
+<h3>📂 Kategoriler</h3>
 
+<!-- TREND -->
 <div class="category">
 <button onclick="toggleMenu(this)">🛍 TREND ÜRÜNLER</button>
 <div class="submenu">
-    <div class="upload-box">
-        <input type="file" accept="video/*">
-    </div>
+    <div onclick="playSingle('trend',0)">🔥 Trend Reklam 1</div>
+    <div onclick="playSingle('trend',1)">🔥 Trend Reklam 2</div>
 </div>
 </div>
 
+<!-- ARABA -->
 <div class="category">
 <button onclick="toggleMenu(this)">🚗 OTOMOBİL ALIM-SATIM</button>
 <div class="submenu">
-    <div class="upload-box">
-        <input type="file" accept="video/*">
-    </div>
+    <div onclick="playSingle('araba',0)">🚗 Araba Reklam 1</div>
 </div>
 </div>
 
+<!-- TEKNOLOJİ -->
 <div class="category">
 <button onclick="toggleMenu(this)">📱 TEKNOLOJİ ÜRÜNLERİ</button>
 <div class="submenu">
-    <div class="upload-box">
-        <input type="file" accept="video/*">
-    </div>
 </div>
 </div>
 
+<!-- YEREL -->
 <div class="category">
 <button onclick="toggleMenu(this)">🏪 YEREL FİRMA İLANLARI</button>
 <div class="submenu">
-    <div class="upload-box">
-        <input type="file" accept="video/*">
-    </div>
+    <div onclick="playSingle('yerel',0)">🏪 Firma 1</div>
 </div>
 </div>
 
+<!-- MÜZİK -->
 <div class="category">
 <button onclick="toggleMenu(this)">🎵 MÜZİK PİYASASI</button>
 <div class="submenu">
-    <div class="upload-box">
-        <input type="file" accept="video/*">
-    </div>
+    <div onclick="playSingle('muzik',0)">🎵 Klip 1</div>
 </div>
 </div>
 
+<!-- MOBİLYA -->
+<div class="category">
+<button onclick="toggleMenu(this)">🪑 MOBİLYA VE AKSESUARLARI</button>
+<div class="submenu">
+    <div onclick="playSingle('mobilya',0)">🪑 Ürün 1</div>
+</div>
 </div>
 
-<!-- EKRAN -->
+<!-- EV YAŞAM -->
+<div class="category">
+<button onclick="toggleMenu(this)">⌚ EV VE YAŞAM</button>
+<div class="submenu">
+    <div onclick="playSingle('aksesuar',0)">⌚ Ürün 1</div>
+</div>
+</div>
+
+<!-- SPOR -->
+<div class="category">
+<button onclick="toggleMenu(this)">⚽ SPOR</button>
+<div class="submenu">
+    <div onclick="playSingle('spor',0)">⚽ Ürün 1</div>
+</div>
+</div>
+
+<!-- GİYİM -->
+<div class="category">
+<button onclick="toggleMenu(this)">👕 GİYİM VE TEXTİL ÜRÜNLERİ</button>
+<div class="submenu">
+    <div onclick="playSingle('giyim',0)">👕 Ürün 1</div>
+</div>
+</div>
+
+<!-- TAKI -->
+<div class="category">
+<button onclick="toggleMenu(this)">💍 TAKI</button>
+<div class="submenu">
+    <div onclick="playSingle('taki',0)">💍 Ürün 1</div>
+</div>
+</div>
+
+<!-- ÇANTA -->
+<div class="category">
+<button onclick="toggleMenu(this)">👜 ÇANTA</button>
+<div class="submenu">
+    <div onclick="playSingle('canta',0)">👜 Ürün 1</div>
+</div>
+</div>
+
+<!-- SERVİS -->
+<div class="category">
+<button onclick="toggleMenu(this)">🚚 EVE SERVİS</button>
+<div class="submenu">
+    <div onclick="playSingle('servis',0)">🚚 Hizmet 1</div>
+</div>
+</div>
+
+<!-- DEKORASYON -->
+<div class="category">
+<button onclick="toggleMenu(this)">🏠 DEKORASYON</button>
+<div class="submenu">
+    <div onclick="playSingle('dekorasyon',0)">🏠 Ürün 1</div>
+</div>
+</div>
+
+<!-- TAMİR -->
+<div class="category">
+<button onclick="toggleMenu(this)">🔧 TAMİRAT TADİLAT</button>
+<div class="submenu">
+    <div onclick="playSingle('tamir',0)">🔧 Hizmet 1</div>
+</div>
+</div>
+
+<!-- TEKNİK SERVİS -->
+<div class="category">
+<button onclick="toggleMenu(this)">🛠 TEKNİK SERVİS</button>
+<div class="submenu">
+    <div onclick="playSingle('teknik_servis',0)">🛠 Servis 1</div>
+</div>
+</div>
+
+<!-- NAKLİYE -->
+<div class="category">
+<button onclick="toggleMenu(this)">🚚 NAKLİYE İLANLARI</button>
+<div class="submenu">
+    <div onclick="playSingle('nakliye',0)">🚚 Hizmet 1</div>
+</div>
+</div>
+
+<!-- ÜRETİM -->
+<div class="category">
+<button onclick="toggleMenu(this)">🏭 ÜRETİM</button>
+<div class="submenu">
+    <div onclick="playSingle('uretim',0)">🏭 Firma 1</div>
+</div>
+</div>
+
+<!-- MARKET -->
+<div class="category">
+<button onclick="toggleMenu(this)">🛒 MARKET</button>
+<div class="submenu">
+    <div onclick="playSingle('market',0)">🛒 Ürün 1</div>
+</div>
+</div>
+
+<!-- KİŞİSEL -->
+<div class="category">
+<button onclick="toggleMenu(this)">🧑 KİŞİSEL REKLAMLAR</button>
+<div class="submenu">
+    <div onclick="playSingle('kisisel',0)">🧑 Reklam 1</div>
+</div>
+</div>
+
+    
+</div>
+
 <div class="screen">
     <video id="player" autoplay muted></video>
 </div>
@@ -205,36 +307,42 @@ function toggleMenu(btn){
 }
 
 // WHATSAPP
-let currentCategory = "trend";
-
 function reklamVer(){
     let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
 Kategori: ${currentCategory}`;
     window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
 }
 
-// ADS (örnek videolar)
+// ADS
 let ads = {
-    trend:["https://www.w3schools.com/html/mov_bbb.mp4"],
-    araba:["https://www.w3schools.com/html/movie.mp4"],
-    teknoloji:["https://www.w3schools.com/html/movie.mp4"]
+    araba:["https://www.w3schools.com/html/mov_bbb.mp4"],
+    teknoloji:["https://www.w3schools.com/html/movie.mp4"],
+    trend:["https://www.w3schools.com/html/movie.mp4"],
+    muzik:["https://www.w3schools.com/html/movie.mp4"]
 };
 
+let currentCategory = "araba";
 let index = 0;
 
-// PLAY
-function play(cat){
-    let video = document.getElementById("player");
+// TEK VİDEO SEÇ
+function playSingle(cat,i){
     currentCategory = cat;
+    index = i;
+    play();
+}
 
-    let list = ads[cat];
-    if(!list) return;
+// PLAY
+function play(){
+    let list = ads[currentCategory];
+    let video = document.getElementById("player");
+
+    if(!list || list.length === 0) return;
 
     video.src = list[index];
     video.play();
 }
 
-play("trend");
+play();
 
 </script>
 
