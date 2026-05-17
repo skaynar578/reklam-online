@@ -2,17 +2,20 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Reklam Online</title>
+<title>reklam online</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial;
     background:black;
     color:white;
+    overflow:hidden;
     padding-top:60px;
 }
 
+/* HEADER */
 .topbar{
     position:fixed;
     top:0;
@@ -28,12 +31,18 @@ body{
     z-index:9999;
 }
 
-.title{font-size:20px;font-weight:bold;}
+.title{
+    font-size:20px;
+    font-weight:bold;
+}
+
 .action{
     background:green;
     color:white;
     padding:8px 14px;
     border-radius:6px;
+    font-weight:bold;
+    font-size:14px;
     cursor:pointer;
 }
 
@@ -41,20 +50,72 @@ body{
 .container{
     display:flex;
     height:calc(100vh - 60px);
+    position:fixed;
+    width:100%;
 }
 
 .menu{
-    width:30%;
+    width:25%;
     background:#1a1a1a;
+    padding:15px;
+    box-sizing:border-box;
     overflow-y:auto;
-    padding:10px;
 }
 
 .screen{
-    width:70%;
+    width:75%;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:black;
+}
+
+/* CATEGORY HEADER */
+.category{
+    margin-top:10px;
+}
+
+.category h3{
+    background:#333;
+    padding:12px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    margin:0;
+}
+
+.category h3:hover{
+    background:red;
+}
+
+/* TRACK LIST */
+.track-list{
+    max-height:0;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.track{
+    background:#222;
+    padding:10px;
+    margin-top:5px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.track:hover{
+    background:green;
+}
+
+/* UPLOAD */
+.upload{
+    background:#111;
+    padding:10px;
+    margin-top:5px;
+    border-radius:6px;
+    border:1px dashed #444;
+    font-size:13px;
 }
 
 video{
@@ -63,94 +124,85 @@ video{
     object-fit:cover;
 }
 
-/* CATEGORY STYLE */
-h3{
-    background:#333;
-    padding:12px;
-    border-radius:6px;
-    cursor:pointer;
-    margin-top:10px;
-}
-
-.track-list{
-    display:none;
-    padding:10px;
-    background:#222;
-    border-radius:6px;
-    margin-top:5px;
-}
-
-.item{
-    background:#111;
-    padding:8px;
-    margin-top:5px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.item:hover{
-    background:green;
-}
-
-.upload{
-    margin-top:10px;
-    background:#000;
-    padding:8px;
-    border:1px dashed #555;
-    border-radius:6px;
-}
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-    <div class="title">📺 Reklam Online</div>
-    <div class="action" onclick="whatsapp()">📢 WhatsApp</div>
-</div>
+<header class="topbar">
+    <div class="title">📺 reklam online DİJİTAL REKLAM</div>
+    <div class="action" onclick="reklamVer()">📢 WhatsApp</div>
+</header>
 
 <div class="container">
 
 <!-- MENU -->
 <div class="menu">
 
-<!-- KATEGORİ 1 -->
-<h3 onclick="toggleList('trend')">
-    🎤 Trend Ürünler
-</h3>
+<h3>📂 Kategoriler</h3>
 
-<div class="track-list" id="trend">
-
-<div class="upload">
-<input type="file" accept="video/*" onchange="upload(event,'trend')">
+<!-- HER KATEGORİ AYNI SİSTEM -->
+<div class="category">
+    <h3 onclick="toggleList('trend')">🛍 TREND ÜRÜNLER</h3>
+    <div class="track-list" id="trend">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'trend')">
+        </div>
+    </div>
 </div>
 
+<div class="category">
+    <h3 onclick="toggleList('araba')">🚗 OTOMOBİL ALIM-SATIM</h3>
+    <div class="track-list" id="araba">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'araba')">
+        </div>
+    </div>
 </div>
 
-<!-- KATEGORİ 2 -->
-<h3 onclick="toggleList('araba')">
-    🚗 Otomobil
-</h3>
-
-<div class="track-list" id="araba">
-
-<div class="upload">
-<input type="file" accept="video/*" onchange="upload(event,'araba')">
+<div class="category">
+    <h3 onclick="toggleList('teknoloji')">📱 TEKNOLOJİ ÜRÜNLERİ</h3>
+    <div class="track-list" id="teknoloji">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'teknoloji')">
+        </div>
+    </div>
 </div>
 
+<div class="category">
+    <h3 onclick="toggleList('yerel')">🏪 YEREL FİRMA İLANLARI</h3>
+    <div class="track-list" id="yerel">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'yerel')">
+        </div>
+    </div>
 </div>
 
-<!-- KATEGORİ 3 -->
-<h3 onclick="toggleList('muzik')">
-    🎵 Müzik Piyasası
-</h3>
-
-<div class="track-list" id="muzik">
-
-<div class="upload">
-<input type="file" accept="video/*" onchange="upload(event,'muzik')">
+<div class="category">
+    <h3 onclick="toggleList('muzik')">🎵 MÜZİK PİYASASI</h3>
+    <div class="track-list" id="muzik">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'muzik')">
+        </div>
+    </div>
 </div>
 
+<div class="category">
+    <h3 onclick="toggleList('mobilya')">🪑 MOBİLYA VE AKSESUAR</h3>
+    <div class="track-list" id="mobilya">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'mobilya')">
+        </div>
+    </div>
+</div>
+
+<div class="category">
+    <h3 onclick="toggleList('spor')">⚽ SPOR</h3>
+    <div class="track-list" id="spor">
+        <div class="upload">
+            <input type="file" accept="video/*" onchange="uploadVideo(event,'spor')">
+        </div>
+    </div>
 </div>
 
 </div>
@@ -164,60 +216,66 @@ h3{
 
 <script>
 
-let videos = {
+let ads = {
     trend: [],
     araba: [],
-    muzik: []
+    teknoloji: [],
+    yerel: [],
+    muzik: [],
+    mobilya: [],
+    spor: []
 };
 
-let current = "trend";
+let currentCategory = "trend";
+let index = 0;
 
-/* AÇ-KAPA */
+/* AÇ/KAPAT */
 function toggleList(id){
     let el = document.getElementById(id);
-    el.style.display = (el.style.display === "block") ? "none" : "block";
+    el.style.maxHeight = el.style.maxHeight ? null : el.scrollHeight + "px";
 }
 
-/* YÜKLE */
-function upload(e,cat){
-    let file = e.target.files[0];
+/* UPLOAD */
+function uploadVideo(event,cat){
+    let file = event.target.files[0];
     if(!file) return;
 
     let url = URL.createObjectURL(file);
 
-    videos[cat].push(url);
+    ads[cat].push(url);
 
-    addItem(cat, url, videos[cat].length - 1);
-}
-
-/* LİSTEYE EKLE */
-function addItem(cat,url,index){
-    let box = document.getElementById(cat);
+    let list = document.getElementById(cat);
 
     let div = document.createElement("div");
-    div.className = "item";
-    div.innerText = "▶ Video " + (index + 1);
+    div.className = "track";
+    div.innerText = "▶ Yeni Video";
+    div.onclick = () => play(cat, ads[cat].length - 1);
 
-    div.onclick = function(){
-        play(cat,index);
-    };
+    list.appendChild(div);
 
-    box.appendChild(div);
+    currentCategory = cat;
+    index = ads[cat].length - 1;
+    play(cat,index);
 }
 
 /* OYNAT */
 function play(cat,i){
-    current = cat;
+    currentCategory = cat;
+    index = i;
 
     let video = document.getElementById("player");
-    video.src = videos[cat][i];
+    let list = ads[cat];
+
+    if(!list || list.length === 0) return;
+
+    video.src = list[i];
     video.play();
 }
 
 /* WHATSAPP */
-function whatsapp(){
-    let msg = "Reklam vermek istiyorum kategori: " + current;
-    window.open("https://wa.me/905074163605?text=" + encodeURIComponent(msg));
+function reklamVer(){
+    let mesaj = "Merhaba, reklam vermek istiyorum. Kategori: " + currentCategory;
+    window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
 }
 
 </script>
