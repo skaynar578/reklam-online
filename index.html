@@ -100,17 +100,11 @@ video{
 
 <body>
 
-<!-- 🔥 HEADER -->
-<header class="topbar"> <header>
-    📺 DİJİTAL REKLAM TV
-    <div style="font-size:12px; font-weight:normal; margin-top:5px;">
-        Dijital Reklam TV ile MARKANIZI DUYURUN ! işletmen, ürünün VE hizmetin doğrudan müşteriye ulaşır.
-    </div>
-</header>
+<!-- 🔥 TOP BAR -->
+<header class="topbar">
 
     <div class="title">📺 DİJİTAL REKLAM TV</div>
 
-    <!-- 🔥 TEK BUTON -->
     <div class="action" onclick="reklamVer()">
         📢 Reklam Ver / WhatsApp
     </div>
@@ -127,24 +121,23 @@ video{
     <button onclick="setCategory('araba')">🚗 OTOMOBİL</button>
     <button onclick="setCategory('teknoloji')">📱 TEKNOLOJİ ÜRÜNLERİ</button>
     <button onclick="setCategory('yerel')">🏪 YEREL FİRMALAR</button>
-    <button onclick="setCategory('muzik')">🎵 MÜZİK KLIP TANITIMLARI</button>
+    <button onclick="setCategory('muzik')">🎵 MÜZİK</button>
 
     <hr>
 
-    <button onclick="setCategory('mobilya')">🪑 MOBİLYA VE AKSESUARLARI</button>
+    <button onclick="setCategory('mobilya')">🪑 MOBİLYA</button>
     <button onclick="setCategory('aksesuar')">⌚ EV VE YAŞAM</button>
     <button onclick="setCategory('spor')">⚽ SPOR</button>
-    <button onclick="setCategory('giyim')">👕 GİYİM VE TEXTİL ÜRÜNLERİ</button>
+    <button onclick="setCategory('giyim')">👕 GİYİM</button>
     <button onclick="setCategory('taki')">💍 TAKI</button>
     <button onclick="setCategory('canta')">👜 ÇANTA</button>
-    <button onclick="setCategory('servis')"> EVE SERVİS</button>
+    <button onclick="setCategory('servis')">🛠 TEKNİK SERVİS</button>
     <button onclick="setCategory('dekorasyon')">🏠 DEKORASYON</button>
-    <button onclick="setCategory('tamir')">🔧 TAMİR TADİLAT</button>
-    <button onclick="setCategory('teknik_servis')">🛠 TEKNİK SERVİS</button>
+    <button onclick="setCategory('tamir')">🔧 TAMİR</button>
     <button onclick="setCategory('nakliye')">🚚 NAKLİYE</button>
     <button onclick="setCategory('uretim')">🏭 ÜRETİM</button>
     <button onclick="setCategory('market')">🛒 MARKET</button>
-    <button onclick="setCategory('kisisel')">🧑 KİSİSEL REKLAMLKAR</button>
+    <button onclick="setCategory('kisisel')">🧑 KİŞİSEL</button>
 
 </div>
 
@@ -156,35 +149,15 @@ video{
 
 <script>
 
-// 📲 TEK WHATSAPP BUTONU
-function reklamVer(){
-
-    let mesaj =
-`Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
-Kategori: ${currentCategory}`;
-
-    let numara = "905074163605";
-
-    window.open("https://wa.me/" + numara + "?text=" + encodeURIComponent(mesaj), "_blank");
-}
-
-// 📂 KATEGORİ
-function setCategory(cat){
-    currentCategory = cat;
-    index = 0;
-    play();
-}
-
-// 🎥 ADS
 let ads = {
     araba:["https://www.w3schools.com/html/mov_bbb.mp4"],
     teknoloji:["https://www.w3schools.com/html/movie.mp4"],
     trend:[],
     yerel:[],
     muzik:["https://www.w3schools.com/html/movie.mp4"],
-
     mobilya:[],
     aksesuar:[],
+    spor:[],
     giyim:[],
     taki:[],
     canta:[],
@@ -200,8 +173,28 @@ let ads = {
 let currentCategory = "araba";
 let index = 0;
 
-// ▶️ PLAY
+// 📂 KATEGORİ
+function setCategory(cat){
+    currentCategory = cat;
+    index = 0;
+    play();
+}
+
+// 📲 WHATSAPP
+function reklamVer(){
+
+    let mesaj =
+`Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
+Kategori: ${currentCategory}`;
+
+    let numara = "905074163605";
+
+    window.open("https://wa.me/" + numara + "?text=" + encodeURIComponent(mesaj), "_blank");
+}
+
+// ▶️ OYNAT
 function play(){
+
     let list = ads[currentCategory];
     let video = document.getElementById("player");
 
