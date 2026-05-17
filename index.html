@@ -15,7 +15,6 @@ body{
     padding-top:60px;
 }
 
-/* HEADER */
 .topbar{
     position:fixed;
     top:0;
@@ -42,11 +41,9 @@ body{
     padding:8px 14px;
     border-radius:6px;
     font-weight:bold;
-    font-size:14px;
     cursor:pointer;
 }
 
-/* LAYOUT */
 .container{
     display:flex;
     height:calc(100vh - 60px);
@@ -58,7 +55,6 @@ body{
     width:25%;
     background:#1a1a1a;
     padding:15px;
-    box-sizing:border-box;
     overflow-y:auto;
 }
 
@@ -70,7 +66,6 @@ body{
     background:black;
 }
 
-/* KATEGORİ */
 .category{
     margin-top:10px;
 }
@@ -81,7 +76,6 @@ body{
     border:none;
     background:#333;
     color:white;
-    font-size:16px;
     border-radius:6px;
     cursor:pointer;
 }
@@ -90,7 +84,6 @@ body{
     background:red;
 }
 
-/* ALT KUTULAR */
 .submenu{
     max-height:0;
     overflow:hidden;
@@ -103,7 +96,6 @@ body{
     margin-top:5px;
     border-radius:6px;
     cursor:pointer;
-    font-size:14px;
 }
 
 .submenu div:hover{
@@ -114,7 +106,6 @@ video{
     width:100%;
     height:100%;
     object-fit:cover;
-    pointer-events:none;
 }
 
 </style>
@@ -122,10 +113,10 @@ video{
 
 <body>
 
-<header class="topbar">
-    <div class="title">📺reklam online DİJİTAL REKLAM </div>
-    <div class="action" onclick="reklamVer()">📢 Reklam Ver / WhatsApp</div>
-</header>
+<div class="topbar">
+    <div class="title">📺 REKLAM ONLINE DİJİTAL REKLAM</div>
+    <div class="action" onclick="reklamVer()">📢 Reklam Ver</div>
+</div>
 
 <div class="container">
 
@@ -133,170 +124,48 @@ video{
 
 <h3>📂 Kategoriler</h3>
 
-<!-- TREND -->
 <div class="category">
-<button onclick="toggleMenu(this)">🛍 TREND ÜRÜNLER</button>
-<div class="submenu">
-    <div onclick="playSingle('trend',0)">🔥 Trend Reklam 1</div>
-    <div onclick="playSingle('trend',1)">🔥 Trend Reklam 2</div>
-</div>
+<button onclick="toggleMenu(this); loadCategory('araba')">🚗 OTOMOBİL</button>
+<div class="submenu"></div>
 </div>
 
-<!-- ARABA -->
 <div class="category">
-<button onclick="toggleMenu(this)">🚗 OTOMOBİL</button>
-<div class="submenu">
-    <div onclick="playSingle('araba',0)">🚗 Araba Reklam 1</div>
-</div>
+<button onclick="toggleMenu(this); loadCategory('teknoloji')">📱 TEKNOLOJİ</button>
+<div class="submenu"></div>
 </div>
 
-<!-- TEKNOLOJİ -->
 <div class="category">
-<button onclick="toggleMenu(this)">📱 TEKNOLOJİ</button>
-<div class="submenu">
-    <div onclick="playSingle('teknoloji',0)">📱 Telefon</div>
-</div>
+<button onclick="toggleMenu(this); loadCategory('muzik')">🎵 MÜZİK</button>
+<div class="submenu"></div>
 </div>
 
-<!-- YEREL -->
 <div class="category">
-<button onclick="toggleMenu(this)">🏪 YEREL FİRMALAR</button>
-<div class="submenu">
-    <div onclick="playSingle('yerel',0)">🏪 Firma 1</div>
-</div>
+<button onclick="toggleMenu(this); loadCategory('trend')">🛍 TREND</button>
+<div class="submenu"></div>
 </div>
 
-<!-- MÜZİK -->
 <div class="category">
-<button onclick="toggleMenu(this)">🎵 MÜZİK</button>
-<div class="submenu">
-    <div onclick="playSingle('muzik',0)">🎵 Klip 1</div>
-</div>
+<button onclick="toggleMenu(this); loadCategory('yerel')">🏪 YEREL</button>
+<div class="submenu"></div>
 </div>
 
-<!-- MOBİLYA -->
-<div class="category">
-<button onclick="toggleMenu(this)">🪑 MOBİLYA VE AKSESUARLARI</button>
-<div class="submenu">
-    <div onclick="playSingle('mobilya',0)">🪑 Ürün 1</div>
-</div>
-</div>
-
-<!-- EV YAŞAM -->
-<div class="category">
-<button onclick="toggleMenu(this)">⌚ EV VE YAŞAM</button>
-<div class="submenu">
-    <div onclick="playSingle('aksesuar',0)">⌚ Ürün 1</div>
-</div>
-</div>
-
-<!-- SPOR -->
-<div class="category">
-<button onclick="toggleMenu(this)">⚽ SPOR</button>
-<div class="submenu">
-    <div onclick="playSingle('spor',0)">⚽ Ürün 1</div>
-</div>
-</div>
-
-<!-- GİYİM -->
-<div class="category">
-<button onclick="toggleMenu(this)">👕 Giyim</button>
-<div class="submenu">
-    <div onclick="playSingle('giyim',0)">👕 Ürün 1</div>
-</div>
-</div>
-
-<!-- TAKI -->
-<div class="category">
-<button onclick="toggleMenu(this)">💍 TAKI</button>
-<div class="submenu">
-    <div onclick="playSingle('taki',0)">💍 Ürün 1</div>
-</div>
-</div>
-
-<!-- ÇANTA -->
-<div class="category">
-<button onclick="toggleMenu(this)">👜 ÇANTA</button>
-<div class="submenu">
-    <div onclick="playSingle('canta',0)">👜 Ürün 1</div>
-</div>
-</div>
-
-<!-- SERVİS -->
-<div class="category">
-<button onclick="toggleMenu(this)">🚚 EVE SERVİS</button>
-<div class="submenu">
-    <div onclick="playSingle('servis',0)">🚚 Hizmet 1</div>
-</div>
-</div>
-
-<!-- DEKORASYON -->
-<div class="category">
-<button onclick="toggleMenu(this)">🏠 DEKORASYON</button>
-<div class="submenu">
-    <div onclick="playSingle('dekorasyon',0)">🏠 Ürün 1</div>
-</div>
-</div>
-
-<!-- TAMİR -->
-<div class="category">
-<button onclick="toggleMenu(this)">🔧 TAMİR TADİLAT</button>
-<div class="submenu">
-    <div onclick="playSingle('tamir',0)">🔧 Hizmet 1</div>
-</div>
-</div>
-
-<!-- TEKNİK SERVİS -->
-<div class="category">
-<button onclick="toggleMenu(this)">🛠 TEKNİK SERVİS</button>
-<div class="submenu">
-    <div onclick="playSingle('teknik_servis',0)">🛠 Servis 1</div>
-</div>
-</div>
-
-<!-- NAKLİYE -->
-<div class="category">
-<button onclick="toggleMenu(this)">🚚 NAKLİYE</button>
-<div class="submenu">
-    <div onclick="playSingle('nakliye',0)">🚚 Hizmet 1</div>
-</div>
-</div>
-
-<!-- ÜRETİM -->
-<div class="category">
-<button onclick="toggleMenu(this)">🏭 ÜRETİM</button>
-<div class="submenu">
-    <div onclick="playSingle('uretim',0)">🏭 Firma 1</div>
-</div>
-</div>
-
-<!-- MARKET -->
-<div class="category">
-<button onclick="toggleMenu(this)">🛒 MARKET</button>
-<div class="submenu">
-    <div onclick="playSingle('market',0)">🛒 Ürün 1</div>
-</div>
-</div>
-
-<!-- KİŞİSEL -->
-<div class="category">
-<button onclick="toggleMenu(this)">🧑 KİŞİSEL REKLAMLAR</button>
-<div class="submenu">
-    <div onclick="playSingle('kisisel',0)">🧑 Reklam 1</div>
-</div>
-</div>
-
-    
 </div>
 
 <div class="screen">
-    <video id="player" autoplay muted></video>
+    <video id="player" autoplay muted controls></video>
 </div>
 
 </div>
 
 <script>
 
+let currentCategory = "araba";
+let adsList = [];
+let index = 0;
+
+/* ======================
+   MENÜ AÇ/KAPAT
+====================== */
 function toggleMenu(btn){
     let menu = btn.nextElementSibling;
 
@@ -307,43 +176,86 @@ function toggleMenu(btn){
     }
 }
 
-// WHATSAPP
-function reklamVer(){
-    let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
-Kategori: ${currentCategory}`;
-    window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
+/* ======================
+   BACKEND'DEN VERİ ÇEK
+====================== */
+async function loadCategory(cat){
+
+    currentCategory = cat;
+
+    let res = await fetch("http://localhost:3000/ads/" + cat);
+    let data = await res.json();
+
+    adsList = data;
+    index = 0;
+
+    renderMenu(data);
+    play();
 }
 
-// ADS
-let ads = {
-    araba:["https://www.w3schools.com/html/mov_bbb.mp4"],
-    teknoloji:["https://www.w3schools.com/html/movie.mp4"],
-    trend:["https://www.w3schools.com/html/movie.mp4"],
-    muzik:["https://www.w3schools.com/html/movie.mp4"]
-};
+/* ======================
+   MENÜYE YAZ
+====================== */
+function renderMenu(data){
 
-let currentCategory = "araba";
-let index = 0;
+    document.querySelectorAll(".submenu").forEach(m=>{
+        m.innerHTML = "";
+    });
 
-// TEK VİDEO SEÇ
-function playSingle(cat,i){
-    currentCategory = cat;
+    if(data.length === 0){
+        return;
+    }
+
+    let container = document.querySelector(".category.open .submenu");
+
+    if(!container) return;
+
+    data.forEach((ad,i)=>{
+        let div = document.createElement("div");
+        div.innerText = ad.title;
+        div.onclick = ()=> playIndex(i);
+        container.appendChild(div);
+    });
+}
+
+/* ======================
+   VİDEO OYNAT
+====================== */
+function play(){
+
+    if(!adsList.length) return;
+
+    let video = document.getElementById("player");
+
+    video.src = "http://localhost:3000/videos/" + adsList[index].videoUrl;
+    video.play();
+
+    video.onended = ()=>{
+        index++;
+        if(index >= adsList.length) index = 0;
+        play();
+    };
+}
+
+/* ======================
+   TEK SEÇİM
+====================== */
+function playIndex(i){
     index = i;
     play();
 }
 
-// PLAY
-function play(){
-    let list = ads[currentCategory];
-    let video = document.getElementById("player");
-
-    if(!list || list.length === 0) return;
-
-    video.src = list[index];
-    video.play();
+/* ======================
+   WHATSAPP
+====================== */
+function reklamVer(){
+    window.open("https://wa.me/905074163605","_blank");
 }
 
-play();
+/* ======================
+   BAŞLAT
+====================== */
+loadCategory("araba");
 
 </script>
 
