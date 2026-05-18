@@ -276,7 +276,6 @@ video{
 
 <script>
 
-// MENÜ (AYNI)
 function toggleMenu(btn){
     let menu = btn.nextElementSibling;
     if(menu.style.maxHeight){
@@ -286,30 +285,22 @@ function toggleMenu(btn){
     }
 }
 
-// WHATSAPP (AYNI)
+// WHATSAPP
 function reklamVer(){
     let mesaj = `Merhaba, Dijital Reklam TV üzerinden reklam vermek istiyorum.
 Kategori: ${currentCategory}`;
     window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
 }
 
-// 🔥 TÜM VİDEOLAR (İSTEDİĞİN KADAR EKLE)
+// ADS (GÜNCELLENDİ)
 let ads = {
     araba: [
-        "reklamlar/BELALI.YARIM.mp4",
-        "reklamlar/araba2.mp4",
-        "reklamlar/araba3.mp4"
+        "BELALI.YARIM.mp4",
+        "https://www.w3schools.com/html/mov_bbb.mp4"
     ],
-    teknoloji: [
-        "reklamlar/teknoloji1.mp4",
-        "reklamlar/teknoloji2.mp4"
-    ],
-    trend: [
-        "reklamlar/trend1.mp4"
-    ],
-    muzik: [
-        "reklamlar/klip1.mp4"
-    ],
+    teknoloji: ["https://www.w3schools.com/html/movie.mp4"],
+    trend: ["https://www.w3schools.com/html/movie.mp4"],
+    muzik: ["https://www.w3schools.com/html/movie.mp4"],
     yerel: [],
     mobilya: [],
     aksesuar: [],
@@ -330,65 +321,27 @@ let ads = {
 let currentCategory = "araba";
 let index = 0;
 
-// 👉 SEÇİNCE BAŞA SAR + OTOMATİK BAŞLASIN
+// SEÇ
 function playSingle(cat,i){
     currentCategory = cat;
     index = i;
     play();
 }
 
-
-<script>
-
-// 🔥 ANA OYNATICI
+// OYNAT
 function play(){
     let video = document.getElementById("player");
     let list = ads[currentCategory];
 
-    if(!list || list.length === 0){
-        return;
-    }
-
-    video.onerror = null;
+    if(!list || list.length === 0) return;
 
     video.src = list[index];
-
-    video.onloadeddata = function(){
-        video.play().catch(() => {});
-    };
-
-    video.onerror = function(){
-        console.log("Video hatalı:", video.src);
-
-        index++;
-        if(index >= list.length){
-            index = 0;
-        }
-
-        play();
-    }
+    video.play();
 }
 
-// 🔥 SAYFA HAZIR OLUNCA (DOĞRU YÖNTEM)
-document.addEventListener("DOMContentLoaded", function(){
-
-    let video = document.getElementById("player");
-
-    // 🔁 OTOMATİK DÖNGÜ
-    video.addEventListener("ended", function(){
-        let list = ads[currentCategory];
-
-        index++;
-
-        if(index >= list.length){
-            index = 0;
-        }
-
-        play();
-    });
-
-    // ▶️ BAŞLAT
-    setTimeout(play, 300);
-});
+play();
 
 </script>
+
+</body>
+</html>
