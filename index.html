@@ -292,15 +292,14 @@ Kategori: ${currentCategory}`;
     window.open("https://wa.me/905074163605?text=" + encodeURIComponent(mesaj));
 }
 
-// ADS (GÜNCELLENDİ)
+// ✅ TÜM KATEGORİLER AYNI - SADECE YOLLAR DÜZELTİLDİ
 let ads = {
     araba: [
-        "BELALI.YARIM.mp4",
-        "https://www.w3schools.com/html/mov_bbb.mp4"
+        "reklamlar/BELALI.YARIM.mp4"
     ],
-    teknoloji: ["https://www.w3schools.com/html/movie.mp4"],
-    trend: ["https://www.w3schools.com/html/movie.mp4"],
-    muzik: ["https://www.w3schools.com/html/movie.mp4"],
+    teknoloji: ["reklamlar/teknoloji1.mp4"],
+    trend: ["reklamlar/trend1.mp4"],
+    muzik: ["reklamlar/klip1.mp4"],
     yerel: [],
     mobilya: [],
     aksesuar: [],
@@ -333,9 +332,17 @@ function play(){
     let video = document.getElementById("player");
     let list = ads[currentCategory];
 
-    if(!list || list.length === 0) return;
+    if(!list || list.length === 0){
+        alert("Bu kategoride video yok!");
+        return;
+    }
 
     video.src = list[index];
+
+    video.onerror = function(){
+        alert("Video bulunamadı! Dosya yolunu kontrol et.");
+    }
+
     video.play();
 }
 
