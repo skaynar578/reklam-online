@@ -134,137 +134,70 @@ video{
 <h3>📂 Kategoriler</h3>
 
 <div class="category">
-<button onclick="toggleMenu(this)">🛍 TREND ÜRÜNLER</button>
-<div class="submenu">
-    <div onclick="playSingle('trend',0)">🔥 Trend Reklam 1</div>
-</div>
-</div>
+let ads = {
+    araba: [
+        "https://www.w3schools.com/html/mov_bbb.mp4",
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    teknoloji: [
+        "https://www.w3schools.com/html/movie.mp4",
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    trend: [
+        "https://www.w3schools.com/html/mov_bbb.mp4",
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    muzik: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    yerel: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    mobilya: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    aksesuar: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    spor: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    giyim: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    taki: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    canta: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    servis: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    dekorasyon: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    tamir: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    teknik_servis: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    nakliye: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    uretim: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ],
+    market: [
+        "https://www.w3schools.com/html/movie.mp4"
+    ],
+    kisisel: [
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+    ]
+};
 
-<div class="category">
-<button onclick="toggleMenu(this)">🚗 OTOMOBİL ALIM-SATIM</button>
-<div class="submenu">
-    <div onclick="playSingle('araba',0)">🚗 Araba Reklam 1</div>
-</div>
-</div>
 
-<div class="category">
-<button onclick="toggleMenu(this)">📱 TEKNOLOJİ ÜRÜNLERİ</button>
-<div class="submenu">
-    <div onclick="playSingle('teknoloji',0)">📱 Teknoloji Reklam 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🏪 YEREL FİRMA İLANLARI</button>
-<div class="submenu">
-    <div onclick="playSingle('yerel',0)">🏪 Firma 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🎵 MÜZİK PİYASASI</button>
-<div class="submenu">
-    <div onclick="playSingle('muzik',0)">🎵 Klip 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🪑 MOBİLYA VE AKSESUARLARI</button>
-<div class="submenu">
-    <div onclick="playSingle('mobilya',0)">🪑 Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">⌚ EV VE YAŞAM</button>
-<div class="submenu">
-    <div onclick="playSingle('aksesuar',0)">⌚ Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">⚽ SPOR</button>
-<div class="submenu">
-    <div onclick="playSingle('spor',0)">⚽ Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">👕 GİYİM VE TEXTİL ÜRÜNLERİ</button>
-<div class="submenu">
-    <div onclick="playSingle('giyim',0)">👕 Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">💍 TAKI</button>
-<div class="submenu">
-    <div onclick="playSingle('taki',0)">💍 Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">👜 ÇANTA</button>
-<div class="submenu">
-    <div onclick="playSingle('canta',0)">👜 Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🚚 EVE SERVİS</button>
-<div class="submenu">
-    <div onclick="playSingle('servis',0)">🚚 Hizmet 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🏠 DEKORASYON</button>
-<div class="submenu">
-    <div onclick="playSingle('dekorasyon',0)">🏠 Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🔧 TAMİRAT TADİLAT</button>
-<div class="submenu">
-    <div onclick="playSingle('tamir',0)">🔧 Hizmet 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🛠 TEKNİK SERVİS</button>
-<div class="submenu">
-    <div onclick="playSingle('teknik_servis',0)">🛠 Servis 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🚚 NAKLİYE İLANLARI</button>
-<div class="submenu">
-    <div onclick="playSingle('nakliye',0)">🚚 Hizmet 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🏭 ÜRETİM</button>
-<div class="submenu">
-    <div onclick="playSingle('uretim',0)">🏭 Firma 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🛒 MARKET</button>
-<div class="submenu">
-    <div onclick="playSingle('market',0)">🛒 Ürün 1</div>
-</div>
-</div>
-
-<div class="category">
-<button onclick="toggleMenu(this)">🧑 KİŞİSEL REKLAMLAR</button>
-<div class="submenu">
-    <div onclick="playSingle('kisisel',0)">🧑 Reklam 1</div>
-</div>
-</div>
 
 </div>
 
